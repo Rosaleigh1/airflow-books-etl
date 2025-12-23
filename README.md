@@ -32,41 +32,10 @@ The pipeline follows the standard **ETL (Extract, Transform, Load)** process:
 
 ## 📊 Pipeline Flowchart
 
-```
-graph TD
-    %% Styling
-    classDef process fill:#e1f5fe,stroke:#0277bd,stroke-width:2px;
-    classDef storage fill:#fff9c4,stroke:#fbc02d,stroke-width:2px,stroke-dasharray: 5 5;
-    classDef output fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px;
 
-    %% Nodes
-    Start((Start))
-    
-    subgraph Airflow_DAG ["⚡ Airflow Pipeline Process"]
-        direction TB
-        Task1["1. Scrape Data from Website <br/>(Python Requests & BS4)"]:::process
-        Task2["2. Check & Create Table <br/>(PostgreSQL)"]:::process
-        Task3["3. Insert Data into DB <br/>(SQLAlchemy)"]:::process
-        Task4["4. Query & Export to Excel <br/>(Pandas)"]:::process
-    end
+<img width="531" height="875" alt="image" src="https://github.com/user-attachments/assets/bb832a19-05aa-407f-b249-22714583aca1" />
 
-    DB[("🗄️ PostgreSQL Database")]:::storage
-    Excel["📑 Final Report.xlsx"]:::output
-    End((End))
-
-    %% Connections
-    Start --> Task1
-    Task1 --> Task2
-    Task2 --> Task3
-    
-    %% Data Flow
-    Task3 -. Save Data .-> DB
-    DB -. Fetch Data .-> Task4
-    
-    Task3 --> Task4
-    Task4 --> Excel
-    Excel --> End
-```  
+  
 
 ---
 Tech Stack
