@@ -36,19 +36,20 @@ The pipeline follows the standard **ETL (Extract, Transform, Load)** process:
 <img width="531" height="875" alt="image" src="https://github.com/user-attachments/assets/bb832a19-05aa-407f-b249-22714583aca1" />
 
   
+<img width="1121" height="334" alt="image" src="https://github.com/user-attachments/assets/ed0f0aae-5644-4f83-bed9-16aca2078440" />
+
 
 ---
 
 ## Tech Stack
-Orchestration: Apache Airflow
+Orchestration: Apache Airflow 
 
 Containerization: Docker & Docker Compose
 
 Database: PostgreSQL
 
-Language: Python 3.x
+Language: Python
 
 Libraries: Pandas, BeautifulSoup4, Requests, SQLAlchemy, OpenPyXL, Psycopg2
 
-<img width="1121" height="334" alt="image" src="https://github.com/user-attachments/assets/ed0f0aae-5644-4f83-bed9-16aca2078440" />
 
