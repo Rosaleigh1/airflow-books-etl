@@ -1,0 +1,18 @@
+# --- Python ---
+__pycache__/
+*.pyc
+
+# --- Airflow & Docker Logs/Data ---
+logs/
+plugins/
+temp/
+my_db_data/        
+pgadmin_data/       
+postgres-db-volume/
+
+# --- Environment Variables / Secrets ---
+.env
+.DS_Store           
+
+# --- Output Files (Optional) ---
+dags/*.xlsx

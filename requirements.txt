@@ -1,0 +1,14 @@
+# --- Airflow Providers  ---
+apache-airflow-providers-postgres
+
+# --- Database Drivers  ---
+psycopg2-binary
+sqlalchemy
+
+# --- Data Processing  ---
+pandas
+openpyxl
+
+# --- Web Scraping  ---
+requests
+beautifulsoup4
