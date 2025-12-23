@@ -62,9 +62,19 @@ graph TD
     Scrape_Task -- "XCom (Data List)" --> Insert_Task
     Create_Table --> Insert_Task
     Insert_Task -- "SQL Insert" --> Postgres
+```  
 
+---
+Tech Stack
+Orchestration: Apache Airflow
 
+Containerization: Docker & Docker Compose
 
-    Postgres -- "Fetch Data" --> Export_Excel
-    Export_Excel --> Output
-    Output --> End((End))
+Database: PostgreSQL
+
+Language: Python 3.x
+
+Libraries: Pandas, BeautifulSoup4, Requests, SQLAlchemy, OpenPyXL, Psycopg2
+
+<img width="1121" height="334" alt="image" src="https://github.com/user-attachments/assets/ed0f0aae-5644-4f83-bed9-16aca2078440" />
+
