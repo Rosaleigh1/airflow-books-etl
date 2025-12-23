@@ -39,7 +39,7 @@ The pipeline follows the standard **ETL (Extract, Transform, Load)** process:
 
 ---
 
-#Tech Stack
+## Tech Stack
 Orchestration: Apache Airflow
 
 Containerization: Docker & Docker Compose
