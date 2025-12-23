@@ -32,36 +32,40 @@ The pipeline follows the standard **ETL (Extract, Transform, Load)** process:
 
 ## 📊 Pipeline Flowchart
 
-```mermaid
+```
 graph TD
     %% Styling
-    classDef extract fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
-    classDef transform fill:#fff9c4,stroke:#fbc02d,stroke-width:2px;
-    classDef load fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px;
-    classDef storage fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef process fill:#e1f5fe,stroke:#0277bd,stroke-width:2px;
+    classDef storage fill:#fff9c4,stroke:#fbc02d,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef output fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px;
 
-    Start((Start)) --> Scrape_Task
+    %% Nodes
+    Start((Start))
     
-    subgraph ETL_Process [⚡ Airflow DAG: fetch_and_store_amazon_books]
-        Scrape_Task[("🕷️ Extract: Scrape Data <br/>(Requests & BS4)")]:::extract
-        
-        Create_Table[("🛠️ Setup: Create Table <br/>(PostgresOperator)")]:::transform
-        
-        Insert_Task[("💾 Load: Insert into DB <br/>(PostgresHook)")]:::load
-        
-        Export_Excel[("📊 Report: Export to Excel <br/>(Pandas & OpenPyXL)")]:::transform
+    subgraph Airflow_DAG ["⚡ Airflow Pipeline Process"]
+        direction TB
+        Task1["1. Scrape Data from Website <br/>(Python Requests & BS4)"]:::process
+        Task2["2. Check & Create Table <br/>(PostgreSQL)"]:::process
+        Task3["3. Insert Data into DB <br/>(SQLAlchemy)"]:::process
+        Task4["4. Query & Export to Excel <br/>(Pandas)"]:::process
     end
 
-    subgraph Data_Storage [🗄️ Data Warehouse]
-        Postgres[(PostgreSQL DB)]:::storage
-    end
-
-    Output[("📑 Final Report <br/>(.xlsx)")]
+    DB[("🗄️ PostgreSQL Database")]:::storage
+    Excel["📑 Final Report.xlsx"]:::output
+    End((End))
 
     %% Connections
-    Scrape_Task -- "XCom (Data List)" --> Insert_Task
-    Create_Table --> Insert_Task
-    Insert_Task -- "SQL Insert" --> Postgres
+    Start --> Task1
+    Task1 --> Task2
+    Task2 --> Task3
+    
+    %% Data Flow
+    Task3 -. Save Data .-> DB
+    DB -. Fetch Data .-> Task4
+    
+    Task3 --> Task4
+    Task4 --> Excel
+    Excel --> End
 ```  
 
 ---
